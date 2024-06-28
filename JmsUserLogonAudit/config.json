@@ -1,0 +1,36 @@
+{
+  "JmsServer": [
+    {
+      "name": "Jumpserver A",
+      "baseUri": "http://192.168.1.1",
+      "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    {
+      "name": "Jumpserver B",
+      "baseUri": "http://serverb.xxx.com",
+      "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    {
+      "name": "Jumpserver C",
+      "baseUri": "https://serverc.xxx.com",
+      "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ],
+  "SmbServer": {
+    "host": "192.168.123.1",
+    "netBiosOverTCP": true,
+    "port": 445,
+    "domain": "",
+    "username": "smbuser",
+    "password": "smbpass",
+    "shareName": "cifs_server",
+    "sharePath": "巡检报告\\堡垒机",
+    "overwrite": false
+  },
+  "BackupOption": {
+    "monthFromOffset": -12,
+    "monthToOffset": -1,
+    "localExportPath": "export",
+    "overwrite": false
+  }
+}
