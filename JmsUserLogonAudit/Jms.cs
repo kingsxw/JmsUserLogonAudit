@@ -79,7 +79,7 @@ namespace JmsUserLogonAudit
                 catch (Exception e)
                 {
                     Log.Error($"{_jmsServer.baseUri}认证失败：{e.Message}");
-                    _isAuthorized =false;
+                    _isAuthorized = false;
                     return;
                 }
                 _result = await response.Content.ReadAsStringAsync();
@@ -93,25 +93,25 @@ namespace JmsUserLogonAudit
                 }
             }
             var logons =
-                from word in _fullStatistic.logs
-                group word.username by word.username
-                into g
+                from logonLog in _fullStatistic.logs
+                group logonLog.username by logonLog.username
+                into l
                 //where g.Count() > 1
-                orderby g.Count() descending
-                select new { g.Key, Count = g.Count() };
+                orderby l.Key ascending
+                select new { l.Key, Count = l.Count() };
             var errors =
                 from logonLog in _fullStatistic.logs
                 where logonLog.status == false
                 group logonLog.username by logonLog.username
                 into c
-                orderby c.Count() descending
+                //orderby c.Count() descending
                 select new { c.Key, Count = c.Count() };
             var reasons =
                 from logonLog in _fullStatistic.logs
                 where logonLog.status == false
                 group logonLog.reason by logonLog.reason
                 into r
-                orderby r.Count() descending
+                orderby r.Key ascending
                 select new { r.Key, Count = r.Count() };
 
             //Console.Clear();

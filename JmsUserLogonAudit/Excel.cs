@@ -16,7 +16,7 @@ namespace JmsUserLogonAudit
             if (fs.userCount == 0)
             {
                 fileInfo.Create().Close();
-                Log.Warning($"此月份登录记录为空，生成空Excel占位文件{fileInfo.FullName}");
+                Log.Warning($"此月份登录记录为空，生成空白Excel占位文件{fileInfo.FullName}");
             }
             else
             {            

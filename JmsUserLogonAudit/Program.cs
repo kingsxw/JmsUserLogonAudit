@@ -24,6 +24,7 @@ namespace JmsUserLogonAudit
                     outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}",
                     retainedFileCountLimit: 31,
                     restrictedToMinimumLevel: LogEventLevel.Information) // 最低记录级别
+
                 .CreateLogger();
             
 #if DEBUG
@@ -72,7 +73,7 @@ namespace JmsUserLogonAudit
             }
 
             var backup = new Backup(jmsServer, smbServer, backupOption);
-            Log.Information("开始导出用户登录日志...");
+            Log.Information("开始本次导出...");
             await backup.ExportAuditFile();
             Log.Information("本次导出结束...");
 
