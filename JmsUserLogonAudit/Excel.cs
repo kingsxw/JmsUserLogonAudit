@@ -19,14 +19,12 @@ namespace JmsUserLogonAudit
                 Log.Warning($"此月份登录记录为空，生成空白Excel占位文件{fileInfo.FullName}");
             }
             else
-            {            
+            {
                 //var path = Path.Combine(Directory.GetCurrentDirectory(), backupOption.localExportPath);
-                var users = fs.userStats;
-                var fails = fs.failStats;
+                var users = fs.userStats.ToList();
+                var fails = fs.failStats.ToList();
                 var title = fs.year + "-" + fs.month;
 
-                users = users.OrderBy(u => u.totalCount).ToList();
-                fails = fails.OrderBy(f => f.count).ToList();
                 using (var package = new ExcelPackage())
                 {
                     var worksheet = package.Workbook.Worksheets.Add(title);

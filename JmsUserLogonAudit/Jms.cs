@@ -97,21 +97,21 @@ namespace JmsUserLogonAudit
                 group logonLog.username by logonLog.username
                 into l
                 //where g.Count() > 1
-                orderby l.Key ascending
+                orderby l.Count(), l.Key ascending
                 select new { l.Key, Count = l.Count() };
             var errors =
                 from logonLog in _fullStatistic.logs
                 where logonLog.status == false
                 group logonLog.username by logonLog.username
-                into c
+                into e
                 //orderby c.Count() descending
-                select new { c.Key, Count = c.Count() };
+                select new { e.Key, Count = e.Count() };
             var reasons =
                 from logonLog in _fullStatistic.logs
                 where logonLog.status == false
                 group logonLog.reason by logonLog.reason
                 into r
-                orderby r.Key ascending
+                orderby r.Count(), r.Key ascending
                 select new { r.Key, Count = r.Count() };
 
             //Console.Clear();
