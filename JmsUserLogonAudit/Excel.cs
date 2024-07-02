@@ -21,8 +21,8 @@ namespace JmsUserLogonAudit
             else
             {
                 //var path = Path.Combine(Directory.GetCurrentDirectory(), backupOption.localExportPath);
-                var users = fs.userStats.ToList();
-                var fails = fs.failStats.ToList();
+                var users = fs.userStats;
+                var fails = fs.failStats;
                 var title = fs.year + "-" + fs.month;
 
                 using (var package = new ExcelPackage())
